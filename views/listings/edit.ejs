@@ -1,0 +1,95 @@
+<body>
+    <% layout('/layouts/boilerplate.ejs') %>
+        <div class="container">
+            <center>
+                <h1 class="mb-5">--Update the list--</h1>
+
+                <form method="post" action="/listing/<%=list._id %>?_method=PUT" enctype="multipart/form-data"
+                    class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Update the title:</label>
+                        <input type="text" class="form-control" name="listing[title]" value="<%=list.title %>"
+                            required />
+
+                        <div class="valid-feedback">
+                            title Looks good..
+                        </div>
+                        <div class="invalid-feedback">
+                            title shouldn't be empty!
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Update the description</label>
+                        <textarea name="listing[description]" class="form-control">
+             <%=list.description %>
+                </textarea>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Preview of the Current image:</label>
+                        <br/>
+                        <br/>
+                        <img src="<%=list.image.url %>" alt="<%=list.image.filename %>" style="height: 10rem;" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Update the image:</label>
+                        <input type="file" class="form-control" name="listing[image][url]" />
+                        <div class="valid-feedback">
+                            image link is valid..
+                        </div>
+                        <div class="invalid-feedback">
+                            image link can't be empty!
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="mb-3 col-md-4">
+                            <label for="price">Update the price:</label>
+                            <input type="text" class="form-control" name="listing[price]" value="<%=list.price %>"
+                                required />
+                            <div class="valid-feedback">
+                                price looks good..
+                            </div>
+                            <div class="invalid-feedback">
+                                price is invalid!
+                            </div>
+                        </div>
+
+                        <div class="mb-3 col-md-4">
+                            <label for="location" class="form-label">Update the location:</label>
+                            <input type="text" class="form-control" name="listing[location]" value="<%=list.location %>"
+                                required />
+                            <div class="valid-feedback">
+                                Valid location
+                            </div>
+                            <div class="invalid-feedback">
+                                Invalid location!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="country" class="form-label">Update the coutry name:</label>
+                        <input type="text" class="form-control" name="listing[country]" value="<%=list.country %>"
+                            required />
+                        <div class="valid-feedback">
+                            good...
+                        </div>
+                        <div class="invalid-feedback">
+                            Invalid!
+                        </div>
+                    </div>
+
+                    <button class="btn btn-danger mt-2">Update the list</button>
+
+
+                </form>
+            </center>
+        </div>
+
+
+</body>

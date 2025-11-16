@@ -34,7 +34,7 @@ const listingSchema = new Schema({
     geomatry: {
         type: {
             type: String,
-            enum: ['Point'],
+            enum: ["point"],
             required: true,
         },
         coordinates: {

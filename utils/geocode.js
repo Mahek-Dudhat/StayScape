@@ -5,7 +5,7 @@ async function geocode(address) {
         const response = await axios.get('https://nominatim.openstreetmap.org/search', {
             params: {
                 q: address,
-                format: 'json',
+                format: "json",
                 limit: 1
             },
             headers: {

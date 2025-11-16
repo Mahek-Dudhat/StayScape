@@ -10,7 +10,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
-        folder: 'Airbnb',
+        folder: "Airbnb",
         allowed_formats: ['jpeg', 'png', 'jpg', 'webp'], // supports promises as well     
     }
 })

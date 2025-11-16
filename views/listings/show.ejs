@@ -1,12 +1,11 @@
 <script>
-    const list = <%- JSON.stringify(list) %>;
-  //  console.log(coordinates);
+    const list = <% - JSON.stringify(list) %>;
+    //  console.log(coordinates);
 </script>
 
 <body>
     <% layout('/layouts/boilerplate.ejs') %>
         <div class="container w-100">
-
             <div class="row">
                 <div class="col-9 offset-3">
                     <h2 class="mb-3">
@@ -21,8 +20,6 @@
                                     <%= list.owner.username %>
                                 </b></p>
                             <p class="card-text"><b>
-
-
                                     <%=list.description %>
                                         <br />
                                         <%=list.price %>
@@ -129,7 +126,6 @@
                                 </div>
                                 <% } %>
 
-
                                     <div class="map-container col-6 offset-3">
                                         <h2>Where you'll be!</h2>
                                         <div id="map"></div>
@@ -137,5 +133,5 @@
 
         </div>
 
-         <script src="/map.js"></script>
+        <script src="/map.js"></script>
 </body>

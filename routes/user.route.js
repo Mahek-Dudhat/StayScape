@@ -11,8 +11,10 @@ router.route('/signup')
 .post(postSignUp);
 
 router.route('/login')
+
 //Redirect to the login page:
 .get(getLogin)
+
 //After user login:
 .post(saveUrl, passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }), postLogin);
 

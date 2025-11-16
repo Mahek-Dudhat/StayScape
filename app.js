@@ -48,7 +48,9 @@ let sessionOptions = {
     }
 }
 
-app.use(session(sessionOptions));
+app.use(session(sessionOptions),()=>{
+    console.log("session created!");
+});
 
 //Note: Must add given below line before you are creating or defining different types of routes:
 app.use(flash());
@@ -80,6 +82,7 @@ atlas_url = process.env.ATLAS_URL;
 console.log('NODE_ENV:', process.env.NODE_ENV);
 console.log('ATLAS_URL:', process.env.ATLAS_URL);
 console.log('ATLAS_URL is undefined?', process.env.ATLAS_URL === undefined);
+
 async function main() {
     await mongoose.connect(atlas_url);
 }
@@ -88,11 +91,12 @@ main().then(res => console.log('Connection established..')).catch(err => console
 
 //Middleware for the new listing msg:
 app.use((req, res, next) => {
-    //console.log(req.user);
+    console.log(req.user);
+   // console.log(process.env.SECRET);
     res.locals.currentUser = req.user;
+
     // console.log("id:", res.locals.currentUser?._id);
     console.log('middleware executed!');
-
     //  console.log(req.flash('scsmsg'));
     //  console.log(req.flash('err'));
     res.locals.scsmsg = req.flash('scsmsg');
@@ -142,7 +146,6 @@ app.get('/register', (req, res) => {
 
     req.session.name = name;
     //  console.log(req.session.name);
-
     if (req.session.name == 'anonymous') {
         req.flash('error', 'User have not registred yet!');
     } else {
@@ -206,7 +209,6 @@ app.use((err, req, res, next) => {
     console.log("error handling middleware executed..");
     res.status(status).render('./listings/error.ejs', { err });
     //res.status(status).send(message);
-
     //res.end('Oops, something went wrong!');
     // next(err);
 })

@@ -23,7 +23,6 @@ const postSignUp = wrapAsync(async (req, res, next) => {
         if (registredUser) {
             req.login(registredUser, (err) => {
                 if (err) {
-                    
                     //  req.flash('err', "Invalid username or password!");
                     req.flash('err', "Login failed after registration!");
                     return res.redirect('/login');
@@ -37,7 +36,6 @@ const postSignUp = wrapAsync(async (req, res, next) => {
         req.flash('err', e.message);
         res.redirect('/signup');
     }
-
 })
 
 //Redirect to the login page:
@@ -47,7 +45,6 @@ const getLogin = (req, res) => {
 
 //After user login:
 const postLogin = async (req, res, next) => {
-
     //console.log(req.path + " " + req.originalUrl);
 
     req.flash('scsmsg', `Welcome back! ${req.user.username}`);

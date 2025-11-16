@@ -11,7 +11,7 @@ if (process.env.NODE_ENV != "production") {
 
 
 module.exports = isLoggedIn = (req, res, next) => {
-    console.log(req.path + " " + req.originalUrl);
+   // console.log(req.path + " " + req.originalUrl);
     if (!req.isAuthenticated()) {
 
         //After user logged in it will redirect to the page which user wanted to visit:

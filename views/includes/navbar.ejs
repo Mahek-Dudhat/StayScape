@@ -40,7 +40,7 @@
 
 
                 </ul>
-                <% if(!currentUser) { %>
+                <% if(typeof(currentUser) == undefined || !currentUser) { %>
                     <div class="list-unstyled d-flex ms-auto me-3 justify-content-evenly">
                         <li class="nav-item me-3"><a href="/signup" class="nav-link"><b>Signup</b></a></li>
                         <li class="nav-item me-3"><a href="/login" class="nav-link"><b>Login</b></a></li>

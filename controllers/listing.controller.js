@@ -76,7 +76,7 @@ const addList = wrapAsync(async (req, res, next) => {
     //console.log(req.user);
     newList.owner = req.user._id;
     newList.image = { url: req.file.path, filename: req.file.filename };
-   // newList.geomatry = { type: 'Point', coordinates: [latitude, longitude] };
+    // newList.geomatry = { type: 'Point', coordinates: [latitude, longitude] };
     //console.log(newList);
 
     if (!newList) {
@@ -89,7 +89,6 @@ const addList = wrapAsync(async (req, res, next) => {
     req.flash('scsmsg', 'New listing is created!');
 
     res.redirect('/listing');
-
 });
 
 //Edit the list:
@@ -111,7 +110,7 @@ const editList = wrapAsync(async (req, res, next) => {
 })
 
 //Update the list:
-const updateList = wrapAsync(async (req, res) => {
+const updateList = wrapAsync(async (req, res, next) => {
 
     const { id } = req.params;
 
@@ -123,9 +122,9 @@ const updateList = wrapAsync(async (req, res) => {
     console.log(editedList);
 
     if (!editedList) {
-
         next(new ExpressError(400, "list can't be update.."));
     }
+
     await editedList.save();
     req.flash('scsmsg', 'List updated...');
 
